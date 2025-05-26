@@ -2,11 +2,14 @@ import { Outlet } from "react-router-dom";
 import NavbabarComponent from "../../components/NavbarComponent";
 import SidebarComponent from "../../components/SidebarComponent";
 import { useEffect, useRef, useState } from "react";
-import MediaContainer from "../../components/MediaContainer";
+import MediaContainer from "../../components/MediaControl/MediaContainer";
+import MediaOverComponent from "../../components/MediaControl/MediaOverComponent";
+import MeidaArtComponent from "../../components/MediaControl/MediaArtComponent";
 
 const RootLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isDektop, setIsDesktop] = useState(false);
+  const [mediaOverOpen, setMediaoverOpen] = useState(false)
   const sidebarRef = useRef<HTMLDivElement>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +37,10 @@ const RootLayout = () => {
     };
 
     const handleChangeWindow = () => {
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < 1024 && window.innerWidth >=640) {
+        setSidebarOpen(false);
+        setIsDesktop(true);
+      } else if (window.innerWidth < 640) {
         setSidebarOpen(false);
         setIsDesktop(false);
       } else {
@@ -64,7 +70,9 @@ const RootLayout = () => {
         ref={sidebarRef}
         isDesktop={isDektop}
       />
-      <MediaContainer />
+      <MediaOverComponent sidebarOpen={sidebarOpen} isDesktop={isDektop} isOpen={mediaOverOpen} />
+      <MediaContainer isMediaOverOpen={mediaOverOpen} setMediaOverOpen={setMediaoverOpen} />
+      <MeidaArtComponent isMediaOverOpen={mediaOverOpen} />
       <div
         className={`p-4  ${
           sidebarOpen ? "sm:ml-64" : isDektop ? "sm:ml-16" : "sm:ml-0"

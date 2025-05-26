@@ -81,8 +81,8 @@ const NavbabarComponent = ({
               >
                 Search
               </label>
-              <div className="relative md:w-2/5">
-                <button className="absolute inset-y-0 start-0 flex items-center md:ps-3 p-2 md:p-0 hover:dark:bg-zinc-800 md:hover:dark:bg-transparent justify-center rounded-full  cursor-pointer">
+              <div className="relative w-2/5">
+                <button className="absolute inset-y-0 start-auto end-0 md:start-0 md:end-auto flex items-center md:ps-3 p-2 md:p-0 hover:dark:bg-zinc-800 md:hover:dark:bg-transparent justify-center rounded-full  cursor-pointer">
                   <svg
                     className="w-4 h-4 text-gray-500 dark:text-zinc-400 dark:focus:text-white"
                     aria-hidden="true"

@@ -1,3 +1,12 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+
+#seekers::-webkit-slider-thumb {
+  appearance: none;
+  background-color: red;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+} 
